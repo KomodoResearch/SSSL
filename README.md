@@ -1,5 +1,5 @@
 # SSSL
-SSSL ("Secure" SSL) is a POC code that implements Crowd-based certificate verification. 
+SSSL ("Secure" SSL) is a POC code that implements crowd-based certificate verification. 
 More details about motivation and principals can be found here:
 
 ###add Blog URL###
