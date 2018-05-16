@@ -35,27 +35,29 @@ The following has been tested on Ubuntu:
 *sudo apt-get install python*
 3) **install pip**   
 *sudo apt-get install python-pip*
-4) **install kademlia for python**  
-*pip install kademlia*
-5) **update "validator.tac" config section**:  
+4) **update "validator.tac" config section**:  
     a. *'BootstrapIP':* if you have only one server, lease as is. Otherwise input the external IP of the first running server.  
     b. *'NodeIP':* update to your server's public IP address  
     c. *'WebPort':* this port should be accessible form the internet  
     d. *'pemPath':* leave as is  
     e. *'keyPath':* leave as is  
     i. *'fingerprintPath':* leave as is  
-6) **add execute rights to genKey.sh**   
+5) **add execute rights to genKey.sh**   
 *sudo chmod +x genCert.sh*
-7) **run genCert.sh script**  
+6) **run genCert.sh script**  
 *./genCert.sh*  
    the script will generate the required certificates and fingerprint. 
    if you run the script from the project's folder, it should work 'as is'. 
    If you move the script the a different folder, update the pem,key and fingerprint paths above accordingly
-8) **install pyOpenSSL**:  
+7) **install pyOpenSSL**:  
    a. *sudo apt-get install build-essential libssl-dev libffi-dev python-dev*  
    b. *sudo pip install pyOpenSSL*
-10) **run**:  
-*twsited -ny validator.tac*
+8) **install twistd**  
+*sudo apt-get  install python-twisted-core*
+9) **install kademlia and its prerequisites**  
+*pip install -r requirements.txt*
+10) **run**:   
+*twistd -ny validator.tac*
 
 
 
