@@ -2,7 +2,7 @@
 SSSL ("Secure" SSL) is a POC code led by Komodo Consulting (https://www.komodosec.com) that implements crowd-based certificate verification. 
 More details about motivation and principals can be found here:
 
-###add Blog URL###
+https://www.komodosec.com/sssl/
 
 The solution consists of two parts:
 
