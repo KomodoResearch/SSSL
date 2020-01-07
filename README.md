@@ -1,10 +1,27 @@
 # SSSL
 SSSL ("Secure" SSL) is a POC code led by Komodo Consulting (https://www.komodosec.com) that implements crowd-based certificate verification. 
+
+***Securing the (not so) Secure Socket Layer (SSSL)***
+Every security researcher faces the following well-known paradox early on in their career: in order to rely on the security of our SSL channel, we must verify the target server’s SSL certificate; in order to do so, we must first rely on the certificate authority (‘CA’). It might have all made sense in the early days of the internet, when these ‘CA’s’ were a handful of known corporates, but in our current reality where modern browsers support hundreds of CA’s, it is becoming increasingly difficult to simply trust the mechanism. In this article (and the attached POC code) I’ll present an alternative approach to certificate verification that attempts to overcome these difficulties.
+
+Wait, is my communication really not secure?!
+
+The first question we want to answer is whether we face a real problem — i.e. are there really attacks exploiting the current SSL verification issue? Unfortunately, the answer is yes, yes indeed. Even if you ignore the possibility that the CA itself might be malicious, disregard the reality that government agencies probably hold root CA certificates themselves, or even if you are simply unaware of how incredibly unprofessionalsome CA’s tend to be, it is clear that malicious attackers have managed to lay their hands on root CA certificates in the past.
+
+What this all means is that when it comes to the modern-day internet, financed, resourceful attackers can launch Man-In-The-Middle attacks against SSL protected websites by issuing fake, ‘valid’ certificates. This is the problem that we attempt to solve.
+
+Past work and fix attempts
+ 
+Over the years there have been several attempts to overcome the CA issue. Public Key Pinning, for example, was developed exactly for this purpose. However, due mainly to complexity and overheads, the idea didn’t stick and is not widely used. An interesting idea that is causing some buzz is the use of blockchain for SSL, however it is not exactly clear whether, or how, this will become a reality.
+
+***Komodo’s approach: Distributed Certificate Verification***
+
 More details about motivation and principals can be found here:
 
 https://www.komodosec.com/blog/distributed-verification-of-ssl-certificates
 
-The solution consists of two parts:
+
+***The solution consists of two parts:***
 
 1. Client side proxy written in Node.js
 2. Server side DHT based validation nodes, written in Python.
